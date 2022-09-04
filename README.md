@@ -1,11 +1,27 @@
-# Start your own "Can of Books" App
+# Project Name
 
-This repository has starter code to begin work on creating your own online bookshelf.
+**Author**: [Abdallah Mosa](https://github.com/AbdallahMosa) & [ismail AL Amir](https://github.com/IsmailAlamir)
+**Version**: 1.0.0 
 
-## What can books do?
+## Overview
+A web application that you can connect with a server and Database that displays some books
+## Getting Started
+1-create server
+2- create DB with monogoDB
+3-connect the server and database with front-end 
 
-Books are life-changing. They have the power to enlighten, educate, entertain, heal, and help us grow. Build out this code base to create an web app to track what books have impacted you, and what's recommended to read next.
 
-## Use this template
 
-Clone this repo to your own account with the green "Use this template" button. Then, add any collaborators. Now you are ready to start adding features! Deploy your site to let the world know which books have had the greatest impact on you, and what's recommended. Enjoy!
+## Estimates
+Name of feature: database
+
+Estimate of time needed to complete: 4 hours
+
+Start time: 2
+
+Finish time: 6
+
+Actual time needed to complete: 4 hours
+
+## Credit and Collaborations
+This project was done by [Abdallah Mosa](https://github.com/AbdallahMosa) and [ismail AL Amir](https://github.com/IsmailAlamir)
