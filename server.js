@@ -66,6 +66,32 @@ function deleteBookHandler(req,res) {
       })
   })
 }
+function updateBook(req,res){
+  console.log("hi update")
+  const id = req.params.id;
+  console.log(id)
+  const {title,description,status} = req.body; //Destructuring assignment
+  console.log(req.body);
+  Book.findByIdAndUpdate(id,{title,description,status},(err,result)=>{
+      if(err) {
+          console.log(err);
+      }
+      else {
+          Book.find({},(err,result)=>{
+              if(err)
+              {
+                  console.log(err);
+              }
+              else
+              {
+                  // console.log(result);
+                  res.send(result);
+              }
+          })
+      }
+  })
+
+}
 
 // seedData();
 app.get('/', (request, response) => {
@@ -76,6 +102,9 @@ app.get('/books',booksHandler)
 app.post('/books',addBooksHandler)
 //delete
 app.delete('/deleteBook/:id',deleteBookHandler);
+// app.put('/book/:id', updateBook)
+app.put('/book/:id',updateBook);
+
 app.get('/test', (request, response) => {
   response.send('test request received')
 })
