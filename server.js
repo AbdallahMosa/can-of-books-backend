@@ -15,31 +15,36 @@ mongoose.connect('mongodb://abdallah:0000@ac-1odpauc-shard-00-00.acyygth.mongodb
 const BookSchema = new mongoose.Schema({
   title: String,
   description : String,
-  status : String
+  status : String,
+  email : String
 });
 const Book = mongoose.model('Book', BookSchema);
+
 function booksHandler (request, response){
-  Book.find({},(err,result)=>{
-      if(undefined)
-      {
-          console.log(err);
-      }
-      else
-      {
-          console.log(result);
-          response.send(result);
-      }
+   let email = request.query.email
+   console.log(email)
+   Book.find({email:email},(err,result) =>{
+    if(err){
+      console.log(err)
+    }
+    else 
+    {
+        response.send(result)
+    }
   })
+ 
+  
  }
 async function addBooksHandler(request,response) {
   console.log(request.body);
-  const {title,description,status} = request.body; //Destructuring assignment
+  const {title,description,status,email} = request.body; //Destructuring assignment
   await Book.create({
       title : title,
       description : description,
-      status : status
+      status : status,
+      email : email
   });
-  Book.find({},(err,result)=>{
+  Book.find({email},(err,result)=>{
       if(err)
       {
           console.log(err);
@@ -53,8 +58,9 @@ async function addBooksHandler(request,response) {
 }
 function deleteBookHandler(req,res) {
   const bookId = req.params.id;
+  const email = req.query.email
   Book.deleteOne({_id:bookId},(err,result)=>{
-    Book.find({},(err,result)=>{
+    Book.find({email},(err,result)=>{
           if(err)
           {
               console.log(err);
@@ -68,6 +74,7 @@ function deleteBookHandler(req,res) {
 }
 function updateBook(req,res){
   console.log("hi update")
+  let email = req.query.email
   const id = req.params.id;
   console.log(id)
   const {title,description,status} = req.body; //Destructuring assignment
@@ -77,7 +84,7 @@ function updateBook(req,res){
           console.log(err);
       }
       else {
-          Book.find({},(err,result)=>{
+          Book.find({email},(err,result)=>{
               if(err)
               {
                   console.log(err);
